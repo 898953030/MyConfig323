@@ -1,2 +1,19 @@
-config:
-  info: "master branch,springcloud-config/config-dev.yml version=7"
+server:
+  port: 8084 # 设置服务端口号
+
+spring:
+  application:
+    name: user-service # 设置服务名称,注册到eureka中后显示的就是该名称
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource # 指定数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1/user_role?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://eureka-8761.com:8761/eureka/,http://eureka-8762.com:8762/eureka/,http://eureka-8763.com:8763/eureka/
+  instance:
+    prefer-ip-address: true # 显示服务ip
